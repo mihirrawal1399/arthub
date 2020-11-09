@@ -1,0 +1,41 @@
+h2{
+  font-size:2.5vw;
+  color: blue;
+}
+
+form{
+  text-align:center;
+}
+
+#label{
+  font-size:2vw;
+}
+
+#id_username{
+  border-radius: 0.5vw;
+  font-size:1.5vw;
+}
+
+
+#id_password{
+  border-radius: 0.5vw;
+  font-size:1.5vw;
+}
+
+#loginButton{
+  height:3.5vw;
+  border-radius: 30%;
+  background-color: rgb(2, 91, 38);
+  color:#fff;
+  font-size:2vw;
+  margin-bottom:2vw;
+}
+
+#loginButton:hover{
+    background-color: rgb(10, 219, 31);
+    transition: 0.5s;
+}
+
+form a{
+  font-size:1.5vw;
+}

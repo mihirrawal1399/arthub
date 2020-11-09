@@ -1,0 +1,259 @@
+body{
+  margin: 0px;
+  padding: 0px;
+  font-family: sans-serif;
+  background: url(back.jpg);
+  border-style: none;
+  width: inherit;
+}
+
+header{
+  background-color: #000;
+  height: 3.5vw;
+}
+/* Designing Logo */
+#logo{
+  color: #fff;
+  font-size: 3vw;
+  font-family:'Euphoria Script', //cursive;
+  position: absolute;
+  top: 0.1vw;
+  left: 0.7vw;
+  animation-name: MultiColor;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#logo:hover{
+  animation-play-state: paused;
+}
+
+@keyframes MultiColor {
+  0%{
+    color: rgb(140, 0, 0);
+  }
+  20%{
+    color: rgb(140, 140, 0);
+  }
+  40%{
+    color: rgb(0, 140, 140);
+  }
+  60%{
+    color: rgb(0, 0, 140);
+  }
+  80%{
+    color: rgb(140, 0, 140);
+  }
+  100%{
+    color: rgb(140, 0, 0);
+  }
+}
+
+/* Designing Menu and Menu Items */
+
+
+.mainMenu{
+  display: flex;
+  margin: 0px;
+  padding: 0px;
+  justify-content: flex-end;
+
+}
+
+.menuItem{
+  width: 13vw;
+  text-align: center;
+  margin-top: 0.3vw;
+  padding: 0.4vw;
+  margin-left:3vw;
+  list-style-type: none;
+  font-size: 2vw;
+  /* position: relative; */
+
+}
+
+.menuItem a{
+  color: rgb(50, 0, 150);
+}
+
+
+
+.subMenu{
+  display: none;
+  background-color: #000;
+  list-style: none;
+  position: absolute;
+  top: 50px;
+  right: 170px;
+  border-radius: 0px 0px 10px 10px;
+  z-index: 2;
+}
+
+.subMenu li{
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: px 0px;
+
+}
+
+  .subMenu a{
+    display: block;
+    margin-left: -20px;
+    margin-right: 15px;
+    text-align: center;
+
+    font-size: 24px;
+    color: #fff;
+  }
+
+  a{
+    text-decoration: none;
+  }
+
+  .menuItem:hover{
+    background-color: rgb(0, 0, 140);
+    border-radius: 30px;
+    box-shadow: 1px 1px 30px rgb(0, 0, 140);
+    transition-duration: 0.3s;
+    transition-timing-function:ease-in-out;
+    height: 2.5vw;
+  }
+
+
+  .menuItem:hover a:first-child{
+    color: #000;
+  }
+
+  .inner:hover{
+    color: #000;
+  }
+
+
+
+/* Designing Categories Window */
+
+.insideCategories{
+  margin: 60px;
+
+}
+
+.modal {
+    z-index: 10;
+    margin-left: auto;
+    margin-right: auto;
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */ */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+
+}
+
+/* Using Css Grid to add Some Categories */
+.container{
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 27vw 27vw 27vw;
+  color: #444;
+  height: 400px;
+  width: 86vw;
+  background-color: tranperent;
+
+}
+
+.box{
+  margin-left: 2.5vw;
+  background-color: #444;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 1.5vw;
+  text-align: center;
+  /* width: 12vw; */
+  text-decoration: none;
+  line-height: 10vw;
+}
+
+.box:hover{
+  background-color: #03b871;
+  font-size: 2vw;
+  color: #000;
+  box-shadow: inset 0 0 10px #000000;
+  transition: 0.8s;
+}
+
+.a{
+    grid-area: 1 / 2 / 2 / 3;
+}
+.b {
+    grid-area: 2 / 2 / 3 / 3;
+}
+.c {
+    grid-area: 2 / 3 / 3 / 4;
+}
+.d {
+    grid-area: 1 / 1 / 2 / 2;
+}
+.e {
+    grid-area: 2 / 1 / 3 / 2;
+}
+.f {
+    grid-area: 1 / 3 / 2 / 4;
+}
+
+
+
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+
+.close{
+  width: 55px;
+  text-align: center;
+  position: absolute;
+  top: 70px;
+  right: 10vw;
+  color: #000;
+  font-size: 50px;
+  color: red;
+}
+
+.close:hover,
+.close:focus {
+    background-color: #000;
+    width: 55px;
+    border-radius: 50%;
+    font-weight: bolder;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#dynamic{
+  min-height: 100%;
+  height: auto !important;
+}
+
+#wrapper:after {
+  content: "";
+  display: block;
+  height: 8.5vw; /* the footer's total height */
+}

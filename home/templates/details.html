@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block title %}{{ photo.title }}{% endblock %}
+
+{% block content %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'home/detailstyle.css' %}">
+      <h1 class='title' align="center">{{ photo.title }}</h1>
+      <img src="{{ photo.display_pic.url }}" alt="Image not Found">
+        <!--Tags and Price row-->
+        {% for tag in tag_list %}
+            <span class="tags">{{ tag }}</span>
+        {% endfor %}
+        <span id="price"> &#8377;{{ photo.price }}</span>
+        <br><br>
+
+      <div class="buttonPanel">
+        <a href="#" onclick="window.history.back();" class="but" align="center">Back</a>
+        {% if user.is_authenticated %}
+            <form id="collectPic" action="" method="post">
+              {% csrf_token %}
+              <input type="submit" class="but" id="collectButton" name="submit" value="{{ button_text }}"></submit>
+            </form>
+        {% else %}
+           <form id="" action="/accounts/login/" method="get">
+            {% csrf_token %}
+            <input type="submit" class="but" name="submit" value="{{ button_text }}"></submit>
+           </form>
+        {% endif %}
+        {% if user.is_authenticated %}
+          {% if order_exist %}
+            <a class="but" download="{{ photo.title }}" href="{{ photo.original_pic.url }}" title="{{ photo.title }}">
+                Download
+            </a>
+
+          {% else %}
+            <a href="#" class="but" align="center" onclick="document.getElementById('pay').style.display='block'">Buy Copyrights</a>
+          {% endif %}
+        {% else %}
+        <a href="/accounts/login/" class="but" align="center">Buy Copyrights</a>
+        {% endif %}
+        <div class="modal animate" id="pay">
+        <div class=insideModal>
+          <span onclick="document.getElementById('pay').style.display='none'" class="close" title="Close Modal">&times;</span>
+          <p>You requested for buying Copyrights for this Photo <br>
+            press the 'Complete Payment' Button to Continue the Payment <br>
+            The Original Picture will Start Downloading Once Payment is Successful
+          </p>
+          <form action=""></form>
+          <form class="paymentForm" name="paymentForm" action="/invoice/" onSubmit="return validate(document.paymentForm.card_number)"  method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="photo_id" value="{{ photo.pk }}">
+            <input type="hidden" name="title" value="{{ photo.title }}">
+            <input type="hidden" name="price" value="{{ photo.price}}">
+            <input type="hidden" name="image_url" value="{{ photo.original_pic.url }}">
+            <label for="card"></label>Card Number :  <input type="text" id="card" name="card_number"><br>
+            <label class="label">Price </label><label id="price_label">₹{{ photo.price }}</label><br><br>
+            <label class="label">Taxes </label><label id="taxes_label">₹0.0</label><br>
+            <input type="submit" id="paymentButton" name="buy" value="Complete Payment"><br>
+          </form>
+          <p>Note: This is Dummy Payment Gateway for Testing Purpose.</p>
+        </div>
+      </div >
+
+      </div>
+      <h2 align="center">Photographer : <a href="/photographer/{{ photo.photographer.id }}">{{ photo.photographer }}</a></h2>
+      <div class="desc"><p>{{ photo.description }}</p>
+      </div>
+      <script>
+
+        function validate(card){
+        var regEx = /^\d{16}$/;
+        if(card.value.match(regEx)){
+            return true;
+        }
+        else{
+            alert("Invalid Card Number");
+            return false;
+        }
+        }
+
+
+      </script>
+
+{% endblock %}

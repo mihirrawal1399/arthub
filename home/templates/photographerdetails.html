@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}{{ photographer_object.photographer_name }}{% endblock %}
+{% block content %}
+{% load static%}
+    <link rel="stylesheet" href="{% static 'home/photographerdetailsstyle.css' %}">
+    <div class="profile_data" >
+    <img src="{{ photographer_object.profile_pic.url }}" alt="Image not Found" id="profil_pic"/>
+    <p id="name">{{ photographer_object.photographer_name }}</p><br>
+    <p id="email">{{ photographer_object.email_id }}</p><br>
+    <p id="city">{{ photographer_object.city }}</p>
+  </div>
+  <div id="all_images" >
+    {% for pic in pics_by %}
+      <a href="/details/{{ pic.id }}"><img class="image" src="{{ pic.display_pic.url }}" alt="Image not Found"></a>
+    {% endfor %}
+    <!--<img class="image" src="temp.png" alt="Image not Found">-->
+    <!--<img class="image" src="temp.png" alt="Image not Found">-->
+    <!--<img class="image" src="temp.png" alt="Image not Found">-->
+    <!--<img class="image" src="temp.png" alt="Image not Found">-->
+    <!--<img class="image" src="temp.png" alt="Image not Found">-->
+  </div>
+{% endblock %}

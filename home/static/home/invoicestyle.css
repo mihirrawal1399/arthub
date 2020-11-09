@@ -1,0 +1,43 @@
+body{
+  margin: 0px;
+  padding: 0px;
+}
+
+.greeting>p:nth-child(1){
+  font-size: 2.5vw;
+  text-align: center;
+  margin: 0px;
+  margin-top: 2.5vw;
+}
+
+.greeting>p:nth-child(3){
+  font-size: 1.8vw;
+  text-align: center;
+  margin: 0px;
+}
+
+table{
+  width: 98vw;
+  font-size: 1.5vw;
+}
+
+body> div > table > tbody > tr:nth-child(5){
+  background: rgb(187, 187, 187);
+}
+
+.temp {
+  position: relative;
+  left: 37vw;
+}
+
+
+
+a>button{
+  height: 2.4vw;
+  position: relative;
+  left: 37vw;
+}
+
+#paymentButton{
+  line-height: 2px;
+}

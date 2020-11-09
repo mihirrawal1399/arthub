@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'PicMesh/loginstyle.css' %}" />
+  <h2  align="center">Log in to ARTHUB</h2>
+  {% if form.errors %}
+    <p style="color: red" align="center">Your username and password didn't match. Please try again.</p>
+  {% endif %}
+  <form method="post" align="center">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}" />
+    {% for field in form %}
+      <p>
+        <span id="label" >{{ field.label_tag }}</span><br>
+        {{ field }}<br>
+        {% for error in field.errors %}
+          <p style="color: red" align="center">{{ error }}</p>
+        {% endfor %}
+        {% if field.help_text %}
+          <p><small style="color: grey" align="center">{{ field.help_text }}</small></p>
+        {% endif %}
+      </p>
+    {% endfor %}
+    <button type="submit" id="loginButton">Log in</button><br>
+    <a href="{% url 'signup' %}">New to ARTHUB? Sign up</a>
+  </form>
+{% endblock %}

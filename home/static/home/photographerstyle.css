@@ -1,0 +1,73 @@
+a{
+  color: inherit;
+  text-decoration: none;
+  border: none;
+}
+
+.photographer{
+  height: 20vw;
+  background-color: #fff;
+  margin: 1.2vw;
+  border-radius: 12px;
+  background:transparent;
+
+}
+
+.photographer:hover{
+  background-color: #fff;
+
+  /* box-shadow: 4px 4px 8px; */
+  box-shadow:  0 10px 10px -5px;
+  transform: scale(1.02);
+  transition-timing-function: ease-out;
+  transition-duration:0.1s;
+
+}
+
+.photographer_img{
+
+  margin-top:1vw;
+  margin-left:1vw;
+  border-radius:50%;
+  width: 18vw;
+  height: 18vw;
+}
+
+.photographer_name{
+  /* display: inline-block; */
+  width: 50vw;
+  font-size: 3vw;
+  position: relative;
+  left: 40vw;
+  top: -21vw;
+}
+
+.email{
+  width: 50vw;
+  position: relative;
+  left: 40vw;
+  top: -22.5vw;
+}
+
+.photographer_des{
+  width: 65vw;
+  text-align: justify;
+  font-size: 1.75vw;
+  font-family: cursive;
+  position: relative;
+  left: 28vw;
+  top: -21vw;
+}
+
+.likeButton, .ShareButton {
+  background-color: #5EE348;
+  height: 3vw;
+  width: 6.5vw;
+  margin: 0vw 2vw;
+  border-radius: 1vw;
+  color: #000;
+  position: relative;
+  left: 40vw;
+  top: -22vw;
+  font-size: 2vw;
+}

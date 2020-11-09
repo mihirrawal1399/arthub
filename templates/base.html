@@ -1,0 +1,60 @@
+<!DOCTYPE html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'PicMesh/style.css' %}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Euphoria+Script" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <title>{% block title%}Title{% endblock %}</title>
+    <link rel="shortcut icon" href="{% static 'PicMesh/favicon.png' %}">
+    <script type="text/javascript">
+    var i = 0;
+    var txt = 'Hello {{user.username}}, Welcome to Arthub';
+    var speed = 150;
+
+    function typeWriter() {
+      if (i < txt.length) {
+        document.getElementById("TextEffect").innerHTML += txt.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      }
+    }
+  </script>
+</head>
+<body id="body">
+        <main>
+            <a href="{% url 'home' %}"><span id="logo">ARTHUB</span></a>
+            <header>
+                <ul class="mainMenu" id="menu">
+                  <li class="menuItem" id="cat" onclick="document.getElementById('categories').style.display='block'"><a href="#">Categories</a></li>
+                  <li class="menuItem" id="photographer"><a href="{% url 'photographer' %}">Artist</a></li>
+                  {% if user.is_authenticated %}
+                    <li class="menuItem" id="collection"><a href="/collection/">My Collection</a></li>
+                    <li class="menuItem" id="logout"><a href="/logout">Logout</a></li>
+                  {% else %}
+                    <li class="menuItem"><a href="/accounts/login/">My Collection</a></li>
+                    <li class="menuItem" id="login"><a href="/accounts/login">Login</a></li>
+                  {% endif %}
+                </ul>
+                <div class="modal animate" id="categories" onclick="document.getElementById('categories').style.display='none'">
+                    <div class=insideCategories>
+                    <span onclick="document.getElementById('categories').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    <div class="container">
+                      <!--<a href="" class="box a">{{ categories }}</a>-->
+                      {% for cate in categories %}
+                      <a href="/categories/{{cate.id}}" class="box">{{cate}}</a>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+            </header>
+        </main>
+        <div id="dynamic">
+        {% block content%}
+
+        {% endblock %}
+        </div>
+
+</body>
+</html>

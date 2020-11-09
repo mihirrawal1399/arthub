@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice</title>
+    <link rel="stylesheet" href="../static/home/invoicestyle.css">
+</head>
+{% block content %}
+<body>
+  <div class="print">
+  <div class="greeting">
+    <p>
+      Thanks for Using Arthub.
+    </p><br>
+    <p>
+      This Invoice is to Certify that you had succesfully buyed Copyrights for Photo mentioned Below
+    </p>
+  </div>
+  <table cellspacing="25px">
+    <tr>
+      <td>Transaction ID</td>
+      <td>{{ order }}</td>
+    </tr>
+    <tr>
+      <td>Photo Title</td>
+      <td>{{ name }}</td>
+    </tr>
+    <tr>
+      <td>Photo Price</td>
+      <td>₹{{ price }}</td>
+    </tr>
+    <tr>
+      <td>Taxes and Duties +</td>
+      <td>₹{{ taxes }}</td>
+    </tr>
+    <tr>
+      <td>Total Amount Payed</td>
+      <td>₹{{ total_amount }}</td>
+    </tr>
+
+  </table>
+
+  </div>
+
+  <button class="temp" onclick="window.print()">Print Invoice</button>
+  <a download="{{ name }}" href="{{ image_url }}" title="{{ name }}">
+    <button type="button" id="paymentButton" name="buy" value="Complete Payment"><br> Download Image </button>
+  </a>
+
+</body>
+{% endblock %}
+
+</html>

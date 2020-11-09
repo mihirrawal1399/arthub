@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Photographer{% endblock %}
+
+{% block content %}
+{% load static %}
+  <link rel="stylesheet" href="{% static 'home/photographerstyle.css' %}">
+    {% for box in author %}
+    <a href="{{ box.id }}">
+        <div class="animated flipInX photographer">
+        <img src="{{ box.profile_pic.url }}" alt="Image not found" class="photographer_img">
+        <h2 class="photographer_name">{{ box.photographer_name }}</h2>
+        <h3 class="email">{{ box.email_id }}</h3>
+        <p class="photographer_des">
+          {{ box.details|slice:":200" }}
+        </p>
+      </div>
+    </a>
+    <hr>
+    {% endfor %}
+</body>
+
+{% endblock %}

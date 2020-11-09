@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Collection{% endblock %}
+
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'home/collectionstyle.css'%}">
+    {% if user.is_authenticated %}
+        <h1 align="center">Hey {{ user }}, Here's Collection</h1>
+
+        <div class="containerCol">
+        {% for col in col_pic %}
+            <a href="/details/{{ col.id }}" class="boxCol"><img src="{{ col.display_pic.url }}" alt=""></a>
+        {% endfor %}
+    </div>
+   {% else %}
+      <p>You are not logged in</p>
+      <a href="{% url 'login' %}">login</a>
+    {% endif %}
+{% endblock %}
+

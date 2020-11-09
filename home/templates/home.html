@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'home/stylehome.css' %}" onload="typeWriter()">
+
+      <!-- Creating Banner -->
+
+      <div class="banner">
+
+      {% for photo in trending_pics %}
+        <div class="mySlides fade">
+        <div class="numbertext">{{ forloop.counter }} / 5</div>
+        <a href="details/{{ photo.id }}"><img src="{{ photo.display_pic.url }}" alt="Image not found" style="width:100%"></a>
+        <div class="text">{{ photo.title }}</div>
+      </div>
+      {% endfor %}
+
+
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+      </div>
+      <br>
+
+      <div style="text-align:center">
+        {% for i in trending_pics %}
+          <span class="dot" onclick="currentSlide({{ i.id }})"></span>
+        {% endfor %}
+      </div>
+
+
+      <!-- Creating Greet Text -->
+      <p id="TextEffect" align="center"> </p>
+
+      <!-- Creating Category Row -->
+     <h1 class='category'>{{ cat_name_digital }}</h1>
+      <div class="row">
+        {% for photo in city_pic %}
+          <a href=" /details/{{ photo.id }} " align="center"><img src="{{ photo.display_pic.url }}" alt="Image not Found" class="frame"></a>
+        {% endfor %}
+        <a href="/categories/{{ cat_name_digital.id }}"><div class="viewMore" alt="See More">&#x21e8;</div></a>
+      </div>
+
+      <h1 class='category'>{{ cat_name_photography }}</h1>
+      <div class="row">
+        {% for photo in nature_pic %}
+          <a href="/details/{{ photo.id }}" align="center"><img src="{{ photo.display_pic.url }}" alt="Image not Found" class="frame"></a>
+        {% endfor %}
+        <a href="/categories/{{ cat_name_photography.id }}"><div class="viewMore">&#x21e8;</div></a>
+      </div>
+
+      <h1 class='category'>{{ cat_name_graffiti }}</h1>
+      <div class="row">
+        {% for photo in brand_pic %}
+          <a href="/details/{{ photo.id }}" align="center"><img src="{{ photo.display_pic.url }}" alt="Image not Found" class="frame"></a>
+        {% endfor %}
+        <a href="/categories/{{ cat_name_graffiti.id }}"><div class="viewMore">&#x21e8;</div></a>
+      </div>
+
+      <h1 class='category'>{{ cat_name_painting }}</h1>
+      <div class="row">
+        {% for photo in devotion_pic %}
+          <a href="/details/{{ photo.id }}" align="center"><img src="{{ photo.display_pic.url }}" alt="Image not Found" class="frame"></a>
+        {% endfor %}
+        <a href="/categories/{{ cat_name_painting.id }}"><div class="viewMore">&#x21e8;</div></a>
+      </div>
+
+<!-- LinkingExternal Javascript -->
+
+<script src="{% static 'home/homescript.js' %}"></script>
+{% endblock %}
